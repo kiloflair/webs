@@ -10,14 +10,27 @@
 }
 /* --- HERO SECTION (TEXT & FILTER) --- */
 .hero-section {
-    height: 100vh; /* На весь экран */
-    /* background-color: var(--bg-main);  <--- УДАЛИ ИЛИ ЗАКОММЕНТИРУЙ ЭТУ СТРОКУ */
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-    padding-top: var(--header-height); /* Учитываем шапку */
+    padding-top: var(--header-height);
+    
+    /* ФОНОВАЯ КАРТИНКА */
+    /* Добавляем легкое бежевое наложение, чтобы текст (заголовки и кнопки) читался четко */
+    background-image: 
+        linear-gradient(
+            to bottom, 
+            rgba(246, 245, 231, 0.8), 
+            rgba(246, 245, 231, 0.4)
+        ), 
+        url('../img/hero-bg.jpg'); /* Путь к картинке. Если картинка в корне, удали ../ */
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Эффект параллакса */
 }
 
 .hero-inner {
@@ -1874,4 +1887,131 @@ body {
     0% { transform: translate(0, 0); }
     50% { transform: translate(30px, 50px); }
     100% { transform: translate(0, 0); }
+}
+/* --- ГЛАВНЫЙ ЭКРАН (HOME PAGE) С ТЕМНОЙ КАРТИНКОЙ --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    margin-top: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    /* ФОН С ТЕМНЫМ ГРАДИЕНТОМ */
+    background-image: 
+        linear-gradient(
+            to bottom, 
+            rgba(18, 17, 12, 0.7), /* Темный сверху */
+            rgba(18, 17, 12, 0.5)  /* Посветлее к центру */
+        ), 
+        url('../img/martini.png'); /* Путь к твоей картинке */
+    
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Эффект параллакса */
+    color: #f9f5ee; /* Весь текст в этой секции теперь светлый */
+}
+
+/* Настройка текста для темного фона */
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    color: #ffffff; /* Чистый белый для заголовка */
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Легкая тень для объема */
+}
+
+.hero-kicker {
+    color: var(--accent-olive); /* Оставляем оливковый акцент */
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+/* Убираем лишние обертки, если они остались от старого кода */
+.hero-image-wrapper, .hero-image {
+    display: none !important;
+}
+
+.hero-overlay {
+    background: transparent !important;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- SERVICES PAGE RE-DESIGN --- */
+
+/* Фон для всей страницы сервисов */
+.services-page-body {
+    background-color: #0f0f0d; /* Глубокий темный фон */
+}
+
+/* --- SERVICES REDESIGN (OLIVE THEME) --- */
+
+/* Уникальный фон для страницы Services */
+.services-hero-bg {
+    background-image: 
+        linear-gradient(to bottom, rgba(246, 245, 231, 0.85), rgba(246, 245, 231, 0.6)), 
+        url('../img/services-main-bg.jpg'); /* Убедись, что картинка называется так */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Эффект параллакса */
+    min-height: 100vh;
+}
+
+.service-card-glass {
+    background: rgba(243, 236, 223, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(167, 154, 108, 0.3);
+    border-radius: 30px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
+}
+
+.service-card-glass:hover {
+    transform: translateY(-10px);
+    background: rgba(243, 236, 223, 0.9);
+    border-color: var(--accent-olive);
+}
+
+/* Блоки с фото (Alternating sections) */
+.feature-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 100px;
+}
+
+.feature-row:nth-child(even) {
+    flex-direction: row-reverse; /* Чередование */
+}
+
+.feature-image {
+    flex: 1;
+    border-radius: 40px;
+    overflow: hidden;
+    height: 450px;
+}
+
+.feature-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feature-text {
+    flex: 1;
+}
+
+/* Адаптив для мобилок */
+@media (max-width: 768px) {
+    .feature-row, .feature-row:nth-child(even) {
+        flex-direction: column;
+    }
 }
