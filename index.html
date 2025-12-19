@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kilo Flair Mixology | Bar Takeovers & Events</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo-combo">
+    <span class="logo-text-left">Kilo</span>
+    <img src="img/logo.png" alt="Kilo Flair Flame Logo" class="logo-icon">
+    <span class="logo-text-right">Flair</span>
+</a>
+
+
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="cocktails.html">Signature Cocktails</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- BURGER (мобайл) -->
+            <button class="burger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO: полноэкранное фото мартини -->
+    <main>
+        <section class="hero">
+            <div class="hero-image-wrapper">
+                <!-- ЗАМЕНИ путь на свой PNG коктейля -->
+                <img src="img/martini.png" alt="Signature martini cocktail" class="hero-image">
+            </div>
+
+            <div class="hero-overlay">
+                <div class="container hero-content">
+                    <p class="hero-kicker">New York based • Bar Takeovers • Events</p>
+                    <h1>Kilo Flair Mixology</h1>
+                    <p class="hero-subtitle">
+                        High-impact flair shows, elevated cocktails and immersive bar experiences 
+                        for private events, venues and corporate clients.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="contact.html" class="btn primary">Book an Event</a>
+                        <a href="#about" class="btn ghost">Watch Intro</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT + VIDEO -->
+        <section id="about" class="about-section">
+            <div class="container about-grid">
+                <div class="about-text">
+                    <p class="section-kicker">About Me</p>
+                    <h2>Flair, fire & modern mixology</h2>
+                    <p>
+                        I’m Kilo Flair – New York based flair bartender and mixologist, 
+                        winner of international Cocktail Art Challenge. 
+                        I create immersive cocktail experiences with fire shows, 
+                        custom menus and high-volume bar takeovers.
+                    </p>
+                    <p>
+                        From intimate speakeasies to 300-guest corporate events, 
+                        my team handles everything: concept, bar setup, batch prep, 
+                        signature serves and show moments that guests actually remember.
+                    </p>
+                    <a href="about.html" class="text-link">More about Kilo Flair →</a>
+                </div>
+
+                <div class="about-video">
+                    <!-- ВСТАВЬ свой YouTube ID вместо VIDEO_ID -->
+                    <div class="video-frame">
+                        <iframe 
+                            src="https://www.youtube.com/embed/VIDEO_ID" 
+                            title="Kilo Flair mixology showreel"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY -->
+        <section class="gallery-section">
+            <div class="container">
+                <div class="gallery-header">
+                    <p class="section-kicker">Gallery</p>
+                    <h2>Bar takeovers, fire shows & events</h2>
+                   <p class="gallery-subtitle gallery-subtitle-2">
+                        Moments from speakeasies, rooftops and private parties across New York and beyond.
+                    </p>
+                </div>
+
+                <div class="gallery-grid">
+                    <!-- Просто меняй src на свои картинки/кадры -->
+                    <figure class="gallery-item">
+                        <img src="img/event1.jpg" alt="Flair bartending fire show">
+                    </figure>
+                    <figure class="gallery-item tall">
+                        <img src="img/event2.jpg" alt="Signature cocktail close-up">
+                    </figure>
+                    <figure class="gallery-item wide">
+                        <img src="img/event3.jpg" alt="Crowd reacting at bar takeover">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/event4.jpg" alt="Molecular cocktail service">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/event5.jpg" alt="Bar catering setup">
+                    </figure>
+                    <figure class="gallery-item wide">
+                        <img src="img/event6.jpg" alt="Flair bartending on stage">
+                    </figure>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© <span id="year"></span> Kilo Flair Mixology. All rights reserved.</p>
+            <p class="footer-note">Based in New York • Available worldwide for events & bar takeovers.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

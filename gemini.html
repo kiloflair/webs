@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olive Cocktail Bar</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- НАСТРОЙКИ ТЕМЫ (Оливковая палитра) --- */
+        :root {
+            --olive-dark: #2C3323;   /* Глубокий темный оливковый */
+            --olive-main: #556B2F;   /* Основной оливковый */
+            --olive-light: #8F9E75;  /* Светлый оливковый */
+            --sand: #ECE5B6;         /* Песочный цвет для контраста */
+            --card-bg: #fffaf0;      /* Цвет фона карточки */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--olive-dark);
+            color: var(--sand);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        h1, h2 { font-family: 'Playfair Display', serif; }
+
+        /* --- СЦЕНА 1: Видео скролл-баром --- */
+        .video-scroll-section {
+            height: 250vh; /* Делаем секцию очень длинной, чтобы было где скроллить */
+            position: relative;
+        }
+
+        .video-container {
+            position: sticky; /* Видео "прилипает" к верху экрана */
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, var(--olive-main) 0%, var(--olive-dark) 80%);
+        }
+
+        /* Это заглушка, имитирующая видео */
+        #pouring-video {
+            /* ВАЖНО: Чтобы видео скроллилось, оно должно быть достаточно длинным и качественным */
+            /* object-fit: cover; - раскомментируй для реального видео */
+            width: 80%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            
+            /* ВРЕМЕННЫЕ СТИЛИ ДЛЯ ЗАГЛУШКИ (Удали, когда вставишь реальное видео) */
+            height: 600px;
+            background: url('https://placehold.co/800x600/2C3323/ECE5B6?text=Видео+наливания+(скролль+меня)++&font=playfair') no-repeat center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        /* --- СЦЕНА 2: Барная стойка и Карта --- */
+        .bar-counter-section {
+            height: 120vh; /* Чуть больше экрана для плавного появления */
+            position: relative;
+            background-color: var(--olive-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1500px; /* Глубина 3D пространства */
+        }
+
+        /* Имитация поверхности барной стойки */
+        .bar-surface {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 35%;
+            background: linear-gradient(to bottom, #3a2a1a, #221810); /* Деревянные тона */
+            border-top: 5px solid #1a120a;
+            z-index: 1;
+        }
+
+        /* Общий контейнер для стакана и карты */
+        .composition-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 2; /* Поверх стойки */
+            transform: translateY(200px); /* Исходно спрятан внизу */
+            opacity: 0;
+        }
+
+        /* Стакан */
+        .glass-mockup {
+            width: 220px;
+            height: 350px;
+            /* Временная заглушка стакана */
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 10px 10px 40px 40px;
+            position: relative;
+            /* Тень на стойке */
+            filter: drop-shadow(0 25px 20px rgba(0,0,0,0.6));
+        }
+        
+        /* Жидкость внутри стакана */
+        .glass-mockup::after {
+             content: '';
+             position: absolute;
+             bottom: 10px; left: 10px; right: 10px;
+             height: 70%;
+             background: linear-gradient(to top, #d48c24, #f5c564); /* Цвет виски/коктейля */
+             border-radius: 5px 5px 30px 30px;
+             opacity: 0.8;
+        }
+
+        /* --- 3D КАРТА --- */
+        .card-container {
+            width: 320px;
+            height: 480px;
+            perspective: 1000px;
+            position: relative;
+            /* Изначально немного повернута и смещена, чтобы эффектно появиться */
+            transform: rotate(-5deg) translateX(-30px);
+        }
+
+        /* Внутренняя часть, которая будет вращаться */
+        .card-flipper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d; /* Важно для 3D */
+            /* Исходное положение - повернута спиной (рубашкой) к зрителю */
+            transform: rotateY(179.9deg); 
+        }
+
+        /* Общие стили для лица и рубашки карты */
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* Скрываем обратную сторону */
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border: 8px solid white; /* Белая рамка как у игральной карты */
+            box-sizing: border-box;
+        }
+
+        /* Рубашка карты (Обложка) */
+        .card-back {
+            background-color: var(--olive-main);
+            /* Узор для рубашки */
+            background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotateY(180deg); /* Эта сторона повернута */
+        }
+        
+        .card-back::after {
+            content: '♠ COCKTAIL CLUB ♠';
+            color: rgba(255,255,255,0.5);
+            font-family: 'Playfair Display';
+            font-size: 24px;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 20px 40px;
+        }
+
+        /* Лицевая сторона (Текст) */
+        .card-front {
+            background-color: var(--card-bg);
+            color: var(--olive-dark);
+            padding: 40px;
+            transform: rotateY(0deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-front h2 {
+            margin-top: 0;
+            color: var(--olive-main);
+            font-size: 32px;
+            border-bottom: 3px solid var(--olive-light);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .card-front p {
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+
+    <section class="video-scroll-section">
+        <div class="video-container">
+            <div id="pouring-video">
+                </div>
+        </div>
+    </section>
+
+    <section class="bar-counter-section">
+        <div class="bar-surface"></div> <div class="composition-wrapper">
+            <div class="glass-mockup"></div>
+
+            <div class="card-container">
+                <div class="card-flipper">
+                    <div class="card-front">
+                        <h2>The Olive Martini</h2>
+                        <p>Изысканный твист на классику. Джин премиум-класса, настоянный на оливковых листьях, капля сухого вермута и пара капель оливкового рассола.</p>
+                        <p>Подается ледяным с тремя отборными оливками.</p>
+                    </div>
+                    <div class="card-back"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- АНИМАЦИЯ 1: Видео-скролл ---
+        
+        const videoElement = document.querySelector("#pouring-video");
+        
+        // ЭТА ЧАСТЬ КОДА СРАБОТАЕТ, КОГДА ТЫ ЗАМЕНИШЬ <div> на <video>
+        // Проверяем, что это действительно видео-тег перед тем, как пытаться им управлять
+        if (videoElement.tagName === 'VIDEO') {
+            
+            // Ждем загрузки метаданных видео, чтобы знать его длительность
+            videoElement.onloadedmetadata = function() {
+                let tlVideo = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".video-scroll-section",
+                        start: "top top",
+                        end: "bottom bottom",
+                        scrub: 1, // Плавная привязка к скроллу (1 сек задержки)
+                        // markers: true // Включи для отладки
+                    }
+                });
+
+                // Главная магия: анимируем свойство currentTime видео от 0 до конца
+                tlVideo.to(videoElement, {
+                    currentTime: videoElement.duration || 10, // Если duration не определилась, ставим 10 сек
+                    ease: "none" // Важно: линейная скорость, без ускорений
+                });
+            };
+        } else {
+             // ВРЕМЕННАЯ АНИМАЦИЯ ДЛЯ ЗАГЛУШКИ (пока нет видео)
+             // Просто уменьшаем заглушку, чтобы показать, что скролл работает
+             gsap.to("#pouring-video", {
+                 scale: 0.7,
+                 opacity: 0.5,
+                 scrollTrigger: {
+                    trigger: ".video-scroll-section",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                 }
+             });
+        }
+
+
+        // --- АНИМАЦИЯ 2: Появление коктейля и разворот карты ---
+
+        const tlComposition = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".bar-counter-section",
+                start: "top center", // Начинаем, когда верх секции достиг середины экрана
+                end: "center center", // Заканчиваем, когда центр секции в центре экрана
+                scrub: 1.5, // Чуть более медленная и плавная анимация
+                toggleActions: "play none none reverse" // Проигрывать при скролле вниз, реверс при скролле вверх
+            }
+        });
+
+        tlComposition
+        // 1. Вся композиция (стакан + карта) поднимается из-за стойки
+        .to(".composition-wrapper", {
+            y: 0,
+            opacity: 1,
+            duration: 2,
+            ease: "power3.out"
+        })
+        // 2. Одновременно с этим карта выравнивается и переворачивается
+        .to(".card-container", {
+            rotation: 0, // Убираем начальный наклон (-5deg)
+            x: 0,        // Убираем начальное смещение (-30px)
+            duration: 2,
+            ease: "power2.inOut"
+        }, "<") // знак "<" означает "начать одновременно с предыдущей анимацией"
+        
+        // 3. Самый сок: переворот карты (флип)
+        .to(".card-flipper", {
+            rotationY: 0, // Вращаем от 180deg до 0deg
+            duration: 2.5,
+            ease: "power2.inOut" // Плавный старт и конец вращения
+        }, "<+=0.5"); // Начинаем через 0.5 сек после начала появления
+
+    </script>
+</body>
+</html>

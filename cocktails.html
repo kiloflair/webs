@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kilo Flair Mixology | Signature Cocktails</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+    <div class="ambient-background">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+</div>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo-combo">
+                <span class="logo-text-left">Kilo</span>
+                <img src="img/logo.png" alt="Kilo Flair Flame Logo" class="logo-icon">
+                <span class="logo-text-right">Flair</span>
+            </a>
+
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="cocktails.html" class="active">Signature Cocktails</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container hero-inner">
+                <h1 class="hero-title">
+                    The Art of <br>
+                    <span class="italic-accent">Batched Mixology</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Curated cocktails for high-volume events.<br>
+                    Select your palate profile below.
+                </p>
+
+                <div class="filter-pills">
+                    <button class="pill-btn" data-filter="savory">Savory & Rich</button>
+                    <button class="pill-btn" data-filter="fresh">Fresh & Fizzy</button>
+                    <button class="pill-btn" data-filter="fruity">Fruity & Tart</button>
+                    <button class="pill-btn" data-filter="no-abv">Zero Proof</button>
+                    <button class="pill-btn active" data-filter="all">View All Menu</button>
+                </div>
+                
+                <div class="scroll-indicator">
+                    <span>Explore Menu</span>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cocktails-list-section">
+            <div class="container">
+                
+                <div class="cocktail-row" data-category="savory">
+                    <div class="glass-wrapper">
+                        <img src="img/velvet-olive.png" alt="The Velvet Olive" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>The Velvet Olive</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Olive Oil Gin</span>
+                                    <span class="tag">Lemon Verbena</span>
+                                    <span class="tag">Sea Salt</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Silky & Savory</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">Very High (32%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 10%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 20%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 95%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Oysters, Scallops, or Light Tapas</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"Fat-washed technique creates a texture like liquid silk."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cocktail-row" data-category="savory">
+                    <div class="glass-wrapper">
+                        <img src="img/banana-brule.png" alt="The Gilded Swine" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>The Gilded Swine</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Bacon Bourbon</span>
+                                    <span class="tag">Roasted Banana</span>
+                                    <span class="tag">Maple</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Smoky & Rich</span>
+                                        </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">High (30%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 70%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 20%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 85%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Smoked Brisket, Dark Chocolate, or Aged Gouda</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"Sunday breakfast turned into a sophisticated nightcap."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cocktail-row" data-category="fresh">
+                    <div class="glass-wrapper">
+                        <img src="img/neon-agave.png" alt="Neon Agave" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>Neon Agave</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Tequila Blanco</span>
+                                    <span class="tag">Lemongrass</span>
+                                    <span class="tag">Spicy Chili</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Electric Fresh</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">Medium (22%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 30%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 85%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 40%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Shrimp Ceviche, Fish Tacos, or Spicy Tuna</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"A controlled explosion of freshness with a spicy kick."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cocktail-row" data-category="fresh">
+                    <div class="glass-wrapper">
+                        <img src="img/riviera-spritz.png" alt="The Riviera Spritz" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>The Riviera Spritz</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Clarified Watermelon</span>
+                                    <span class="tag">Basil Oil</span>
+                                    <span class="tag">Prosecco</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Fruity & Fizzy</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">Low (11%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 50%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 30%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 15%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Fresh Oysters, Melon Salad, or Prosciutto</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"Like biting into a cold watermelon on a hot luxury yacht."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cocktail-row" data-category="fruity">
+                    <div class="glass-wrapper">
+                        <img src="img/roasted-gold.png" alt="Roasted Gold" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>Roasted Gold</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Rum & Pineapple</span>
+                                    <span class="tag">Highball Style</span>
+                                    <span class="tag">Pink Peppercorn</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Smoky & Fizzy</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">Medium (16%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 65%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 40%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 60%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Glazed Pork Ribs, Grilled Pineapple, or Brie</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"The depth of roasted fruit meets the refreshment of a cold highball."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cocktail-row" data-category="fruity">
+                    <div class="glass-wrapper">
+                        <img src="img/midnight-sage.png" alt="Midnight Sage" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>Midnight Sage</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Gin London Dry</span>
+                                    <span class="tag">Blackberry Shrub</span>
+                                    <span class="tag">Fresh Sage</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Tart & Herbal</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">Medium (20%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 45%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 75%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 50%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Duck Breast, Goat Cheese Tart, or Venison</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"A perfect balance of berry sweetness and botanical complexity."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cocktail-row" data-category="fresh">
+                    <div class="glass-wrapper">
+                        <img src="img/sakura-75.png" alt="Sakura 75" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>Sakura 75</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Roku Gin</span>
+                                    <span class="tag">Yuzu Citrus</span>
+                                    <span class="tag">Champagne</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Floral & Crisp</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">Medium (14%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 35%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 80%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 25%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Salmon Sashimi, Tempura, or Light Pastries</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"A Japanese twist on a French classic. Elegant bubbles meet cherry blossom."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cocktail-row" data-category="fruity">
+                    <div class="glass-wrapper">
+                        <img src="img/invisible-cacao.png" alt="Invisible Cacao" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>Invisible Cacao</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Clarified Milk</span>
+                                    <span class="tag">Cacao Nib</span>
+                                    <span class="tag">Orange Oil</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Sweet & Complex</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">High (24%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 85%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 10%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 80%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Tiramisu, Espresso, or Vanilla Bean Gelato</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"Looks like water, tastes like a dark chocolate truffle. Pure magic."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+<div class="cocktail-row" data-category="savory">
+                    <div class="glass-wrapper">
+                        <img src="img/saffron-silk.png" alt="The Saffron Silk" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>The Saffron Silk</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Saffron Gin</span>
+                                    <span class="tag">Chamomile Honey</span>
+                                    <span class="tag">Gold Dust</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Floral & Luxury</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">Medium (18%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 60%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 20%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 70%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Lobster Tail, White Truffle, or Foie Gras</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"Drinking liquid gold. The most expensive spices in the world, in one glass."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cocktail-row" data-category="no-abv">
+                    <div class="glass-wrapper">
+                        <img src="img/emerald-garden.png" alt="Emerald Garden" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>Emerald Garden</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Seedlip Garden</span>
+                                    <span class="tag">Sugar Snap Pea</span>
+                                    <span class="tag">Mint Oil</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Green & Clean</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">Zero (0%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 15%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 30%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 40%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Vegan Tartare, Fresh Salad, or Cucumber Sushi</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"The essence of the English countryside. Crisp, herbal, and alcohol-free."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cocktail-row" data-category="no-abv">
+                    <div class="glass-wrapper">
+                        <img src="img/spiced-havana.png" alt="Spiced Havana" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>Spiced Havana</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Seedlip Spice</span>
+                                    <span class="tag">Smoked Grapefruit</span>
+                                    <span class="tag">Oak Bark</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Warm & Aromatic</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">Zero (0%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 45%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 50%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 65%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Grilled Vegetables, Spiced Nuts, or Hummus</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"All the complexity of a dark spirit, with none of the alcohol."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cocktail-row" data-category="no-abv">
+                    <div class="glass-wrapper">
+                        <img src="img/golden-grove.png" alt="Golden Grove" class="glass-img">
+                    </div>
+                    
+                    <div class="h-card-container">
+                        <div class="h-card-flipper">
+                            <div class="h-card-front">
+                                <h2>Golden Grove</h2>
+                                <div class="tags-container">
+                                    <span class="tag">Seedlip Grove</span>
+                                    <span class="tag">Blood Orange</span>
+                                    <span class="tag">Lemongrass</span>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="specs-grid">
+                                    <div class="spec-item">
+                                        <span class="label">Profile</span>
+                                        <span class="value">Zesty & Bright</span>
+                                    </div>
+                                    <div class="spec-item">
+                                        <span class="label">Strength</span>
+                                        <span class="value">Zero (0%)</span>
+                                    </div>
+                                </div>
+                                <div class="flavor-equalizer">
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sweet</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 60%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Sour</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 70%;"></div></div>
+                                    </div>
+                                    <div class="eq-row">
+                                        <span class="eq-label">Body</span>
+                                        <div class="eq-bar"><div class="eq-fill" style="width: 30%;"></div></div>
+                                    </div>
+                                </div>
+                                <div class="pairing-info">
+                                    <span class="pairing-label">Perfect Pairing:</span>
+                                    <span class="pairing-value">Citrus Tart, Light Seafood, or Goat Cheese</span>
+                                </div>
+                                <div class="divider"></div>
+                                <p class="mood-text">"A burst of Mediterranean sunshine in a glass. Refreshing and sophisticated."</p>
+                            </div>
+                            <div class="h-card-back"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© <span id="year"></span> Kilo Flair Mixology. All rights reserved.</p>
+            <p class="footer-note">Based in New York • Available worldwide.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

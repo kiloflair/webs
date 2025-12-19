@@ -1,0 +1,1877 @@
+/* ---------- BASE ---------- */
+
+:root {
+    --bg-main: #f6f5e7;          /* нейтральный бежевый */
+    --bg-card: #f3ecdf;
+    --accent-olive: #a79a6c;     /* оливковый акцент */
+    --text-main: #3c372c;
+    --text-muted: #847b69;
+    --header-height: 80px;
+}
+/* --- HERO SECTION (TEXT & FILTER) --- */
+.hero-section {
+    height: 100vh; /* На весь экран */
+    /* background-color: var(--bg-main);  <--- УДАЛИ ИЛИ ЗАКОММЕНТИРУЙ ЭТУ СТРОКУ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding-top: var(--header-height); /* Учитываем шапку */
+}
+
+.hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 800px;
+}
+
+.hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem; /* Крупно */
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-main);
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+.hero-title .italic-accent {
+    font-family: 'Playfair Display', serif; /* Наш красивый шрифт с засечками */
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent-olive);
+    text-transform: none; /* Оставляем строчные для красоты */
+    display: block;
+    margin-top: 10px;
+}
+
+.hero-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+/* КНОПКИ ФИЛЬТРА (PILLS) */
+.filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.pill-btn {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    padding: 12px 24px;
+    border: 1px solid var(--accent-olive);
+    border-radius: 50px; /* Капсула */
+    color: var(--accent-olive);
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.pill-btn:hover, .pill-btn.active {
+    background: var(--accent-olive);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(167, 154, 108, 0.2);
+}
+
+/* СКРОЛЛ ИНДИКАТОР */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.6;
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-olive);
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 40px;
+    background-color: var(--accent-olive);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 0.95rem; padding: 0 20px; }
+    .pill-btn { padding: 10px 18px; font-size: 0.75rem; }
+}
+/* FULLSCREEN BACKGROUND VIDEO */
+.martini-hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: var(--header-height);
+}
+
+.martini-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* Плавность */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+
+/* ЛОГО-КОМБИНАЦИЯ: Kilo (icon) Flair */
+
+.logo-combo {
+    display: flex;
+    align-items: center;
+    gap: 1px; /* расстояние между Kilo, логотипом и Flair */
+    text-decoration: none;
+}
+
+/* Текст Kilo Flair — такой же стиль, как у меню */
+.logo-combo span {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* Иконка (бутылка с огнем) */
+.logo-icon {
+    height: 74px; /* размер иконки — идеально рядом с текстом */
+    width: auto;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+/* Эффект увеличения */
+.logo-combo:hover .logo-icon {
+    transform: scale(1.06);
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+    position: relative;
+overflow-x: hidden;
+    z-index: 1;
+    margin: 0; /* На всякий случай, если не было */
+}
+
+/* контейнер */
+
+.container {
+    width: min(1120px, 100% - 2.5rem);
+    margin-inline: auto;
+}
+
+/* ---------- HEADER ---------- */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(16px);
+    background-color: #F8F7F2;
+    transition: background-color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+.site-header.scrolled {
+    background-color: #F8F7F2;
+    opacity: 0.92;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* nav */
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent-olive);
+    transition: width 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-olive);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--accent-olive);
+}
+
+/* burger */
+
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    height: 2px;
+    border-radius: 999px;
+    background-color: var(--text-main);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* состояние крестика */
+
+.burger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+    position: relative;
+    height: 100vh; /* на весь экран */
+    margin-top: var(--header-height);
+    overflow: hidden;
+}
+
+.hero-image-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* фото по длине/высоте экрана */
+    display: block;
+    transform: scale(1.02);
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  
+}
+
+.hero-image.scrolled {
+    transform: scale(1.05) translateY(-10px);
+    opacity: 0.96;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 4rem;
+    background: linear-gradient(to bottom, #454411, #979265,);
+
+}
+
+.hero-content {
+    max-width: 560px;
+    color: #f9f5ee;
+}
+
+.hero-kicker {
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: rgba(249, 245, 238, 0.85);
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.6rem, 4vw, 3.4rem);
+    margin: 0 0 0.75rem;
+}
+
+.hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 32rem;
+    color: rgba(249, 245, 238, 0.85);
+    margin-bottom: 1.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+/* buttons */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.6rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease-out;
+}
+
+.btn.primary {
+    background-color: var(--accent-olive);
+    color: #f9f5ee;
+}
+
+.btn.primary:hover {
+    background-color: #8f845b;
+    transform: translateY(-1px);
+}
+
+.btn.ghost {
+    background-color: transparent;
+    color: #f9f5ee;
+    border-color: rgba(249, 245, 238, 0.7);
+}
+
+.btn.ghost:hover {
+    background-color: rgba(249, 245, 238, 0.1);
+}
+
+/* ---------- SECTIONS ---------- */
+
+section {
+    padding-block: 4.5rem;
+}
+
+.section-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.75rem;
+    color: #454411;
+    margin-bottom: 0.5rem;
+}
+
+/* about */
+
+.about-section {
+    background:none;
+}
+
+
+.about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    margin: 0 0 1rem;
+    color: #454411
+}
+
+.about-text p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #a79a6c;
+    margin-bottom: 0.9rem;
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #454411;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.text-link:hover {
+    border-color: #454411;
+    color: #8f845b;
+}
+
+/* video */
+
+.about-video .video-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 */
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+    background-color: #111;
+}
+
+.about-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------- GALLERY (Pinterest style) ---------- */
+
+.gallery-section {
+    background: transparent;
+}
+.gallery-header .section-kicker {
+    color: #a79a6c
+}
+
+.gallery-header h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+    color: #454411
+}
+
+.gallery-subtitle {
+    font-size: 0.9rem;
+    color: #a79a6c;
+    max-width: 420px;
+    margin: 0 0 2rem;
+}
+
+.gallery-subtitle-2 {
+    color: #a79a6c
+}
+
+/* Мозаика */
+
+.gallery-grid {
+    column-count: 3;
+    column-gap: 1.1rem;
+}
+
+.gallery-item {
+    break-inside: avoid;
+    margin-bottom: 1.1rem;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--bg-card);
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.gallery-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.25), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
+    filter: saturate(1.1);
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+/* просто классы, если захочешь разной высоты картинку */
+.gallery-item.tall img {
+    min-height: 260px;
+}
+.gallery-item.wide img {
+    min-height: 180px;
+}
+
+/* ---------- FOOTER ---------- */
+
+.site-footer {
+    padding-block: 2.5rem 2rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.08), transparent);
+}
+
+.footer-inner {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.footer-note {
+    margin-top: 0.4rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 960px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .about-video {
+        order: -1;
+    }
+
+    .hero-overlay {
+        align-items: flex-end;
+        padding-bottom: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        inset: var(--header-height) 0 auto 0;
+        flex-direction: column;
+        background-color: rgba(247, 242, 232, 0.98);
+        padding: 1.5rem 1.5rem 2rem;
+        gap: 1.2rem;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .hero {
+        height: 90vh;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .gallery-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 520px) {
+    .container {
+        width: min(100% - 1.6rem, 100%);
+    }
+
+    .hero {
+        height: 85vh;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .gallery-grid {
+        column-count: 1;
+    }
+}
+
+/* ---------- SERVICES PAGE ---------- */
+
+.page-hero {
+    padding-top: calc(var(--header-height) + 2.5rem);
+    padding-bottom: 3.5rem;
+    background-color: var(--bg-main);
+}
+
+.page-hero-services .page-hero-inner {
+    display: flex;
+    align-items: flex-end;
+    min-height: 40vh;
+}
+
+.page-hero-copy h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.1rem, 3vw, 2.6rem);
+    margin: 0 0 0.75rem;
+}
+
+.page-hero-subtitle {
+    max-width: 560px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin: 0 0 1.5rem;
+}
+
+/* PACKAGES */
+
+.packages-section {
+    padding-block: 3.5rem 3.5rem;
+}
+
+.packages-header h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+}
+
+.packages-subtitle {
+    max-width: 520px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0 0 2rem;
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.8rem;
+    margin-bottom: 2.2rem;
+}
+
+.package-card {
+    background-color: #f3ecdf;
+    border-radius: 18px;
+    padding: 1.6rem 1.4rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+.package-featured {
+    position: relative;
+    border: 1px solid var(--accent-olive);
+}
+
+.package-label {
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-olive);
+}
+
+.package-title {
+    font-family: "Playfair Display", serif;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.package-tagline {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.package-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.package-list li::before {
+    content: "•";
+    margin-right: 0.5rem;
+    color: var(--accent-olive);
+}
+
+.package-note {
+    margin: 0.3rem 0 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.inline-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.text-link-inline {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.text-link-inline:hover {
+    border-color: transparent;
+}
+
+.packages-footer-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+    background-color: #f7f2e8;
+}
+
+.packages-footer-text {
+    font-size: 0.9rem;
+    color: var(--text-main);
+    margin: 0;
+}
+
+.btn.ghost.dark-outline {
+    border-color: var(--accent-olive);
+    color: var(--accent-olive);
+}
+
+.btn.ghost.dark-outline:hover {
+    background-color: rgba(167,154,108,0.08);
+}
+
+/* SERVICES LIST */
+
+.services-list-section {
+    padding-block: 3.5rem 3.5rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 3rem;
+}
+
+.services-intro {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin: 0 0 1rem;
+}
+
+.services-intro.small {
+    font-size: 0.85rem;
+}
+
+.services-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.services-bullets li::before {
+    content: "—";
+    margin-right: 0.4rem;
+    color: var(--accent-olive);
+}
+
+
+/* FINAL CTA */
+
+.final-cta-section {
+    padding-block: 3rem 3rem;
+    border-top: 1px solid rgba(0,0,0,0.04);
+}
+
+.final-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.final-cta-inner p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    max-width: 420px;
+}
+
+
+/* ---------- FLOATING HERO CARD (like "Ready?" block) ---------- */
+
+.services-hero {
+    position: relative;
+
+    /* расстояние от хедера — чтобы не липла */
+    padding-top: calc(var(--header-height) + 3rem);
+    padding-bottom: 4rem;
+
+    /* центрируем карточку */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+.services-hero-card {
+    background-color: rgba(243, 236, 223, 0.92);
+    backdrop-filter: blur(6px);
+
+    border-radius: 32px;
+    padding: 3rem 3.4rem;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+
+    /* точная ширина облака */
+    max-width: 900px;
+    width: 92%;
+
+    /* центрирование по горизонтали */
+    margin: 0 auto;
+
+    text-align: left;
+    position: relative;
+    z-index: 5;
+}
+
+
+.services-hero-card h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.4rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    color: #2e2922;
+}
+
+.services-hero-card .page-hero-subtitle {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #4b4538;
+    margin: 0;
+}
+
+/* MOBILE */
+@media (max-width: 960px) {
+    .services-hero {
+        min-height: 55vh; /* побольше для мобилок */
+        align-items: flex-end;
+        padding-bottom: 2rem;
+    }
+
+    .services-hero-content {
+        margin: 0 auto;
+        max-width: 90%;
+        padding: 1.4rem 1.6rem;
+    }
+}
+/* ---------- GLOBAL TEXT BACKGROUND FOR SERVICES PAGE ---------- */
+
+.services-page-wrapper {
+    display: grid;
+    gap: 2.5rem;
+}
+
+/* Общая плашка */
+.services-card-block {
+    background-color: #f3ecdf;        /* такой же фон как у пакетов */
+    border-radius: 18px;
+    padding: 2rem 2.4rem;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    backdrop-filter: blur(2px);       /* красиво работает с видео */
+}
+
+/* Заголовки внутри */
+.services-card-block h2,
+.services-card-block h3,
+.services-card-block p {
+    color: #3b362d; /* основной текстовый цвет */
+}
+/* ==========================
+   CUSTOM PACKAGE CTA (SERVICES PAGE)
+   ========================== */
+
+.custom-package-cta {
+    padding: 5rem 0;
+    display: flex;
+    justify-content: center;
+}
+/* Make the Book an Event button larger in the Ready section */
+.custom-package-cta .btn.primary {
+    padding: 1.2rem 2.8rem;     /* шире и выше */
+    font-size: 1.15rem;         /* крупнее текст */
+    border-radius: 60px;        /* более премиальная форма */
+}
+
+.custom-cta-inner {
+    background-color: #f3ecdf;
+    border-radius: 22px;
+    padding: 3.5rem 3rem;
+    text-align: center;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+.custom-cta-inner .section-kicker {
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    color: #6a664f;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.custom-cta-title {
+    font-size: 2.4rem;
+    line-height: 1.3;
+    color: #3b352a;
+    margin-bottom: 1.2rem;
+}
+
+.custom-cta-desc {
+    font-size: 1.15rem;
+    color: #4b4538;
+    margin-bottom: 2rem;
+}
+/* ========== RESTORED LARGE TOP HERO (without button) ========== */
+
+.services-top-hero {
+    width: 100%;
+    background: #f8f4e7;
+    padding: calc(var(--header-height) + 0.6rem) 0 1.8rem; /* было 2rem и 4rem */
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.services-top-inner {
+    max-width: 1100px;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.services-top-inner h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #2b271f;
+    margin-bottom: 1.4rem;
+}
+
+.services-top-subtext {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    max-width: 760px;
+    color: #4b4538;
+    margin: 0;
+}
+
+/* Mobile improvements */
+@media (max-width: 960px) {
+    .services-top-hero {
+        padding: calc(var(--header-height) + 1rem) 0 3rem;
+    }
+
+    .services-top-subtext {
+        font-size: 1rem;
+    }
+}
+
+/* === FULLSCREEN SCROLL VIDEO BACKGROUND === */
+
+.scroll-video-wrapper {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    z-index: -5;             /* под всем контентом */
+    pointer-events: none;    /* чтобы не блокировало клики */
+}
+
+.scroll-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* ==========================
+   EXTRA SERVICES CAROUSEL
+========================== */
+
+.extra-services-carousel {
+    margin: 5rem auto 6rem;
+    text-align: center;
+}
+
+.extra-services-carousel .extra-title {
+    font-family: "Playfair Display", serif;
+    font-size: 2.4rem;
+    margin-bottom: 0.4rem;
+    color: #3b352a;
+}
+
+.extra-services-carousel .extra-subtitle {
+    font-size: 1rem;
+    color: #6d685a;
+    margin-bottom: 2.2rem;
+}
+
+/* SLIDER WRAPPER */
+
+.services-slider {
+    position: relative;
+    max-width: 420px;      /* чтобы карточка была высокой 9:16 */
+    margin: 0 auto;
+}
+
+/* Одна карточка = один слайд */
+
+.services-slide {
+    display: none;
+}
+
+.services-slide.active {
+    display: block;
+}
+
+.services-slide-inner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;  /* 9:16 */
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+    background-color: #111;
+}
+
+.services-slide-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay + "кнопка" внутри фото */
+
+.services-slide-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 1.8rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.45), transparent 45%);
+}
+
+.services-tag {
+    display: inline-block;
+    padding: 0.7rem 1.9rem;
+    border-radius: 999px;
+    background-color: #a89b68;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+/* ARROWS (desktop only) */
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background-color: rgba(243,236,223,0.92);
+    color: #4b4538;
+    font-size: 1.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s;
+}
+
+.slider-arrow.prev { left: -3rem; }
+.slider-arrow.next { right: -3rem; }
+
+.slider-arrow:hover {
+    transform: translateY(-50%) translateY(-1px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.4);
+    background-color: #f3ecdf;
+}
+
+/* Dots */
+
+.slider-dots {
+    margin-top: 1.4rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.slider-dots .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    border: none;
+    background-color: #c8c0ab;
+    cursor: pointer;
+    transition: width 0.2s ease, background-color 0.2s ease;
+}
+
+.slider-dots .dot.active {
+    width: 22px;
+    background-color: #a89b68;
+}
+
+/* MOBILE: прячем стрелки, свайп оставляем через JS */
+
+@media (max-width: 768px) {
+    .slider-arrow {
+        display: none;
+    }
+
+    .services-slider {
+        max-width: 320px;
+    }
+}
+/* ==========================
+   EXTRA SERVICES CLOUD SECTION
+========================== */
+
+.extra-services-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.extra-services-cloud {
+    background-color: #f3ecdf;
+    border-radius: 26px;
+    padding: 3.2rem 2.2rem;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+}
+
+/* HEADERS INSIDE CLOUD */
+
+.extra-services-cloud .extra-title {
+    font-family: "Playfair Display", serif;
+    font-size: 2.3rem;
+    margin-bottom: 0.3rem;
+    color: #3b352a;
+}
+
+.extra-services-cloud .extra-subtitle {
+    font-size: 1.05rem;
+    color: #4b4538;
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+
+/* ==========================
+   SIGNATURE COCKTAILS PAGE
+   ========================== */
+
+.cocktails-hero {
+    padding-block: 5.5rem 3.5rem;
+    background-color: var(--bg-main, #f7f2e6);
+}
+
+.cocktails-hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.1rem, 3vw, 2.6rem);
+    margin: 0.4rem 0 0.75rem;
+}
+
+.cocktails-hero .page-hero-subtitle {
+    max-width: 640px;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--text-muted, #827a6a);
+}
+
+/* FILTERS */
+
+.cocktails-filters {
+    padding-bottom: 1.5rem;
+    background-color: var(--bg-main, #f7f2e6);
+}
+
+.cocktails-filters-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+}
+
+.filters-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted, #827a6a);
+    margin: 0;
+}
+
+.filters-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.filter-pill {
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 0.45rem 1.1rem;
+    font-size: 0.85rem;
+    background: #fdf8ee;
+    color: #4a4336;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+                transform 0.15s ease;
+}
+
+.filter-pill:hover {
+    transform: translateY(-1px);
+}
+
+.filter-pill.active {
+    background-color: var(--accent-olive, #979265);
+    border-color: var(--accent-olive, #979265);
+    color: #fdf7ea;
+}
+
+/* =========================================
+   OLIVE BAR EXPERIENCE (Integrated Style)
+   ========================================= */
+
+/* --- СЦЕНА 1: Видео скролл --- */
+.video-scroll-section {
+    height: 250vh; 
+    position: relative;
+    background-color: var(--bg-main); /* Используем основной бежевый фон */
+}
+
+.video-container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-main); /* Фон под видео тоже бежевый */
+    z-index: 1; 
+}
+
+#pouring-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+    box-shadow: none; 
+}
+
+/* =========================================
+   COCKTAILS MENU GRID
+   ========================================= */
+
+/* Обновленная секция видео (добавили текст поверх) */
+.video-scroll-section {
+    height: 200vh; /* Чуть короче, чем было */
+    position: relative;
+    background-color: var(--bg-main);
+}
+
+.video-container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 80vh; /* Видео теперь не на весь экран, чтобы было видно меню снизу */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111; /* Темный фон под видео */
+}
+
+/* Текст поверх видео */
+.hero-overlay-text {
+    position: absolute;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+.hero-overlay-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin: 0;
+    color: var(--bg-main); /* Светлый бежевый */
+}
+.hero-overlay-text p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+#pouring-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    opacity: 0.8; /* Чуть затемняем видео, чтобы текст читался */
+}
+
+
+/* =========================================
+   CHESS LAYOUT & HORIZONTAL CARDS (LARGE)
+   ========================================= */
+
+.cocktails-list-section {
+    background-color: var(--bg-main);
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+/* 1. РАСШИРЯЕМ КОНТЕЙНЕР (Убираем пустоту по бокам) */
+.cocktails-list-section .container {
+    max-width: 1600px; /* Гораздо шире обычного (было ~1200) */
+    width: 95%;        /* Почти на весь экран */
+    padding: 0 40px;
+}
+
+/* РЯД С КОКТЕЙЛЕМ */
+.cocktail-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Раскидываем по краям */
+    gap: 50px;          
+    margin-bottom: 180px;
+    min-height: 500px;
+    
+    /* Сдвигаем ряды ближе к центру, чтобы не прилипали совсем к краям */
+    max-width: 1400px; 
+    margin-left: auto; 
+    margin-right: auto;
+
+    opacity: 0;         
+    transform: translateY(50px);
+}
+
+/* ЧЕТНЫЙ РЯД (Зеркальный) */
+.cocktail-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* --- СТАКАН (ФОРМАТ АРКИ / НИШИ) --- */
+.glass-wrapper {
+    /* Фиксируем пропорцию 9:16 (как сторис) */
+    width: 320px; 
+    height: 570px; /* 320 * 16 / 9 ≈ 570 */
+    position: relative;
+    
+    /* ФОРМА АРКИ: Верх полностью круглый, низ чуть скруглен */
+    border-radius: 200px 200px 20px 20px; 
+    overflow: hidden; /* Обрезаем всё, что торчит за арку */
+    
+    /* Тень и границы для ощущения "Ниши" в стене */
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.5), /* Внутренняя тень */
+                0 30px 60px rgba(0,0,0,0.3);    /* Внешняя тень */
+    
+    border: 1px solid rgba(255,255,255,0.1); /* Тонкая обводка */
+    background-color: #1a1a1a; /* Темный фон, если фото прозрачное */
+    
+    /* Плавность для ховера */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Эффект при наведении: Арка чуть всплывает */
+.cocktail-row:hover .glass-wrapper {
+    transform: translateY(-15px);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.3), 
+                0 50px 70px rgba(0,0,0,0.4);
+}
+
+.glass-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Важно: фото заполнит всю арку, не искажаясь */
+    border-radius: 12px;
+    
+    /* Если картинка была слишком короткой, можно задать мин. высоту */
+    min-height: 580px;
+    /* Если у тебя фото на черном фоне - это идеально.
+       Если прозрачный PNG - он встанет на темный фон .glass-wrapper */
+    transition: transform 0.8s ease;
+}
+
+/* При наведении фото внутри арки чуть приближается (Зум эффект) */
+.glass-wrapper:hover .glass-img {
+    transform: scale(1.1);
+}
+
+
+/* --- ГОРИЗОНТАЛЬНАЯ КАРТА (ЧИСТЫЙ СТИЛЬ) --- */
+/* 1. НОВЫЙ РАЗМЕР КАРТЫ (Высокая и стройная) */
+.h-card-container {
+    width: 650px;       /* Ширина оптимальная */
+    height: 580px;      /* ВАЖНО: Увеличили высоту, чтобы влез весь текст */
+    perspective: 1500px;
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+}
+
+/* Флиппер крутится внутри сцены */
+.h-card-flipper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d; /* <--- ОБЯЗАТЕЛЬНО */
+    /* Здесь НЕ должно быть transform: rotateY(...) - этим управляет JS */
+}
+
+/* --- ОБНОВЛЕННАЯ КАРТОЧКА (TASTING CARD STYLE) --- */
+
+.h-card-front {
+    /* Используем flex, чтобы растянуть контент красиво */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Распределяем контент по высоте */
+    
+    padding: 50px 60px; /* Большие отступы для "воздуха" */
+    
+    /* Остальное без изменений */
+    background-color: #fff;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+/* 3. ЗАГОЛОВОК (КРУПНЕЕ) */
+.h-card-front h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;     /* Сделали еще больше */
+    margin: 0 0 15px 0;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    color: var(--text-main);
+}
+
+/* КОНТЕЙНЕР ТЕГОВ */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    
+    /* Дизайн "Таблетки" */
+    padding: 8px 18px;
+    border: 1px solid var(--accent-olive);
+    border-radius: 50px;
+    color: var(--accent-olive);
+    background: rgba(167, 154, 108, 0.05); /* Едва заметный фон */
+}
+
+/* ЛИНИЯ */
+.divider {
+    height: 1px;
+    width: 100%;
+    background: rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+/* СЕТКА ХАРАКТЕРИСТИК (Profile / Strength) */
+.specs-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    width: 90%;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.spec-item .label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #999; /* Серый */
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.spec-item .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--text-main);
+    font-style: italic;
+}
+
+/* Mood Text (Цитата внизу) */
+.mood-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-top:auto; /* Толкает текст вниз */
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* --- НАСТРОЙКИ СТОРОН КАРТЫ --- */
+
+/* 1. Общие настройки для обеих сторон */
+.h-card-front, .h-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    /* КРИТИЧЕСКИ ВАЖНО: Скрывает "зеркальный" текст с обратной стороны */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* Для Safari/iPhone */
+    
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+/* 2. РУБАШКА (НЕВИДИМКА) */
+.h-card-back {
+    /* Цвет фона точь-в-точь как у сайта */
+    background-color: var(--bg-main); 
+    
+    /* Убираем все границы, тени и картинки */
+    border: none;
+    box-shadow: none;
+    background-image: none;
+    
+    /* Она повернута к нам лицом изначально (в JS мы крутим flipper) */
+    transform: rotateY(180deg);
+}
+
+/* Убираем любой текст или логотип с рубашки */
+.h-card-back::after {
+    content: none;
+    display: none;
+}
+
+/* 3. ЛИЦЕВАЯ СТОРОНА (ОПИСАНИЕ) */
+.h-card-front {
+    background-color: #fff;
+    transform: rotateY(0deg);
+    
+    /* Тень только у развернутой карты */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 50px;
+    text-align: left;
+}
+.ingreds {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-olive); /* Акцент теперь здесь */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 15px;
+    display: inline-block;
+}
+
+.descr {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.05rem; 
+    line-height: 1.7; /* Больше воздуха между строк */
+    color: #555;      /* Чуть мягче черного */
+    margin: 0;
+}
+
+
+/* --- ДОБАВКА ДЛЯ АНИМАЦИИ ФИЛЬТРА --- */
+/* Мы не меняем layout, просто включаем плавность для JS */
+.cocktail-row {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Стили для кнопок, чтобы они выглядели кликабельными */
+button.pill-btn {
+    cursor: pointer; /* Показывает палец при наведении */
+    background: transparent; /* Убираем стандартный серый фон кнопок */
+    font-family: inherit; /* Наследуем шрифт */
+}
+
+button.pill-btn.active {
+    background: var(--accent-olive);
+    color: #fff;
+}
+
+/* --- СТРАХОВКА ВИДИМОСТИ --- */
+.cocktail-row {
+    display: flex;       /* Обязательно flex, чтобы они выстроились */
+    opacity: 1;          /* Полная видимость */
+    transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* --- НОВЫЕ ДЕТАЛИ КАРТЫ (ЭКВАЛАЙЗЕР) --- */
+
+.flavor-equalizer {
+    width: 100%;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Расстояние между линиями */
+}
+
+.eq-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.eq-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #999;
+    width: 70px; /* Фиксированная ширина для ровности */
+    letter-spacing: 0.5px;
+}
+
+.eq-bar {
+    flex-grow: 1; /* Линия занимает всё оставшееся место */
+    height: 4px;  /* Очень тонкая линия */
+    background-color: rgba(0,0,0,0.05); /* Серый фон линии */
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.eq-fill {
+    height: 100%;
+    background-color: var(--accent-olive); /* Оливковое заполнение */
+    border-radius: 2px;
+}
+
+/* --- СТИЛЬ ДЛЯ PAIRING (ГАСТРОНОМИЯ) --- */
+.pairing-info {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.pairing-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent-olive);
+    margin-right: 8px;
+    font-size: 0.9rem;
+}
+
+.pairing-value {
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+
+/* Убедись, что у body стоит relative, чтобы фон не улетел */
+body {
+    position: relative;
+    overflow-x: hidden; /* Важно, чтобы пятна не создавали горизонтальный скролл */
+    z-index: 1;
+}
+
+/* Контейнер для фона, чтобы он был ПОД контентом */
+.ambient-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Убираем на задний план */
+    pointer-events: none; /* Чтобы клики проходили сквозь пятна */
+    overflow: hidden;
+}
+
+/* Общий стиль для пятен */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px); /* Сильное размытие для мягкости */
+    opacity: 0.5; /* Прозрачность, можно регулировать от 0.3 до 0.7 */
+}
+
+/* Пятно 1: Слева сверху (теплый оливковый оттенок) */
+.orb-1 {
+    width: 500px;
+    height: 500px;
+    background: #D8D2BC; /* Чуть темнее твоего фона */
+    top: -150px;
+    left: -150px;
+    animation: float 10s infinite ease-in-out;
+}
+
+/* Пятно 2: Справа снизу (ближе к центру) */
+.orb-2 {
+    width: 600px;
+    height: 600px;
+    background: #E6E0C8; /* Другой оттенок бежевого */
+    bottom: -10%;
+    right: -10%;
+    animation: float 14s infinite ease-in-out reverse;
+}
+
+/* Легкая анимация "дыхания" (по желанию) */
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(30px, 50px); }
+    100% { transform: translate(0, 0); }
+}
