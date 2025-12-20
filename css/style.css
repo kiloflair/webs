@@ -2386,3 +2386,172 @@ body {
     border-color: var(--accent-olive);
     box-shadow: 0 20px 40px rgba(0,0,0,0.05);
 }
+
+
+/* =========================================
+   CONTACT PAGE STYLES (FINAL)
+   ========================================= */
+
+/* Основная секция контактов */
+.contact-section {
+    min-height: 100vh;
+    padding: 160px 0 100px; /* Отступ сверху для хедера */
+    background: var(--bg-main); /* Бежевый фон */
+    display: flex;
+    align-items: center; /* Центрирование по вертикали (если экран большой) */
+}
+
+/* Сетка: Слева Инфо, Справа Форма */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr; /* Левая часть чуть уже, форма шире */
+    gap: 80px; /* Большое пространство между колонками */
+    align-items: flex-start;
+}
+
+/* --- ЛЕВАЯ КОЛОНКА (Инфо и Иконки) --- */
+.contact-info {
+    padding-top: 20px;
+}
+
+.contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    color: var(--text-main);
+}
+
+.contact-item {
+    margin-bottom: 35px;
+}
+
+.contact-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--accent-olive);
+    margin-bottom: 12px;
+}
+
+/* Стили ссылок с SVG иконками */
+.social-link-minimal {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+}
+
+.social-text-span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    border-bottom: 1px solid transparent; /* Для эффекта подчеркивания */
+}
+
+/* Сама SVG иконка */
+.social-icon-svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor; /* Цвет берется от текста */
+    stroke-width: 1.5;
+    fill: none;
+    transition: transform 0.3s ease;
+}
+
+/* Эффекты при наведении на ссылку */
+.social-link-minimal:hover {
+    color: var(--accent-olive);
+}
+
+.social-link-minimal:hover .social-icon-svg {
+    transform: translateX(5px); /* Иконка отъезжает вправо */
+}
+
+/* --- ПРАВАЯ КОЛОНКА (Форма) --- */
+.contact-form-wrapper {
+    background: white;
+    padding: 50px;
+    border-radius: 4px; /* Чуть скругленные углы, но строгие */
+    box-shadow: 0 20px 50px rgba(167, 154, 108, 0.1); /* Мягкая тень */
+    border: 1px solid rgba(167, 154, 108, 0.15);
+}
+
+.form-group {
+    margin-bottom: 35px; /* Отступ между полями */
+    position: relative;
+}
+
+/* Поля ввода (Input, Select, Textarea) */
+.form-input {
+    width: 100%;
+    padding: 12px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: var(--text-main);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #dcdcdc; /* Тонкая серая линия */
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+
+/* Убираем стандартные стили браузера */
+.form-input:focus {
+    outline: none;
+    border-bottom-color: var(--accent-olive); /* При клике линия становится оливковой */
+}
+
+.form-input::placeholder {
+    color: #b0b0b0;
+    font-weight: 300;
+}
+
+/* Стили для выпадающего списка (Select) */
+select.form-input {
+    cursor: pointer;
+    color: var(--text-main);
+}
+/* Фикс для select, чтобы placeholder выглядел серым, пока не выбрано значение (опционально) */
+select.form-input:invalid {
+    color: #b0b0b0;
+}
+
+/* --- АДАПТИВ (МОБИЛЬНЫЕ) --- */
+@media (max-width: 900px) {
+    .contact-section {
+        padding-top: 120px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr; /* Одна колонка */
+        gap: 60px;
+    }
+
+    .contact-info {
+        text-align: center; /* Текст по центру на телефоне */
+    }
+
+    /* Центрируем иконки на телефоне */
+    .social-link-minimal {
+        justify-content: center;
+    }
+    
+    .contact-form-wrapper {
+        padding: 30px 20px; /* Меньше отступы внутри формы */
+    }
+
+    .contact-info h2 {
+        font-size: 2.5rem;
+    }
+    
+    /* Делаем поля даты и гостей на телефоне друг под другом */
+    .contact-form-wrapper form > div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+    }
+}

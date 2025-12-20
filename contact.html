@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Kilo Flair Mixology</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo-combo">
+                <span class="logo-text-left">Kilo</span>
+                <img src="img/logo.png" alt="Kilo Flair Flame Logo" class="logo-icon">
+                <span class="logo-text-right">Flair</span>
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="cocktails.html">Signature Cocktails</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info fadeIn">
+                    <p class="section-kicker">Inquiries</p>
+                    <h2>Let's Create<br><span class="italic-accent">Magic</span></h2>
+                    <p style="margin-bottom: 50px; line-height: 1.6; color: var(--text-muted); max-width: 400px;">
+                        Ready to elevate your event? Fill out the form to request a quote or discuss a custom package. We typically reply within 24 hours.
+                    </p>
+
+                    <div class="contact-item">
+                        <span class="contact-label">Email Us</span>
+                        <a href="mailto:kiloflair@gmail.com" class="social-link-minimal">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="social-icon-svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span class="social-text-span">kiloflair@gmail.com</span>
+                        </a>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-label">Follow Our Work</span>
+                        <a href="https://instagram.com/kilo_flair" target="_blank" class="social-link-minimal">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="social-icon-svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                            <span class="social-text-span">@kilo_flair</span>
+                        </a>
+                    </div>
+
+                    <div class="contact-item" style="margin-top: 50px;">
+                        <span class="contact-label">Base Location</span>
+                        <span class="contact-value" style="font-size: 1.2rem; cursor: default;">New York • Worldwide Available</span>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper fadeInUp">
+                    
+                    <form action="https://formsubmit.co/kiloflair@gmail.com" method="POST">
+                        
+                        <input type="hidden" name="_subject" value="New Package Inquiry!">
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-input" placeholder="Email Address" required>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                            <div class="form-group">
+                                <input type="text" name="date" class="form-input" placeholder="Event Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="guests" class="form-input" placeholder="Guest Count">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="contact-label" style="margin-bottom: 5px;">Select Package</label>
+                            <select name="package" class="form-input" style="color: var(--text-main); cursor: pointer;" required>
+                                <option value="" disabled selected>Choose your experience...</option>
+                                <option value="Signature Cocktails Only">Craftsman Only</option>
+                                <option value="Flair Show">Full Bar Takeover</option>
+                                <option value="Custom">Custom/Bespoke Choice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="message" class="form-input" rows="3" placeholder="Additional details or special requests..." style="resize: none;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn primary" style="width: 100%; margin-top: 20px;">Send Request</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© <span id="year"></span> Kilo Flair Mixology. All rights reserved.</p>
+            <p class="footer-note">Based in New York • Available worldwide.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
