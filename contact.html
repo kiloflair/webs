@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Kilo Flair Mixology</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kilo Flair Mixology | Bar Takeovers & Events</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body>
 
+    <!-- HEADER -->
     <header class="site-header">
         <div class="container header-inner">
             <a href="index.html" class="logo-combo">
-                <span class="logo-text-left">Kilo</span>
-                <img src="img/logo.png" alt="Kilo Flair Flame Logo" class="logo-icon">
-                <span class="logo-text-right">Flair</span>
-            </a>
+    <span class="logo-text-left">Kilo</span>
+    <img src="img/logo.png" alt="Kilo Flair Flame Logo" class="logo-icon">
+    <span class="logo-text-right">Flair</span>
+</a>
+
+
             <nav class="main-nav">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="cocktails.html">Signature Cocktails</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="contact.html"class="active">Contact</a></li>
                 </ul>
             </nav>
+
+            <!-- BURGER (мобайл) -->
+            <button class="burger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -123,9 +139,7 @@
     </footer>
     
     
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+ <script src="js/main.js"></script>
 
 </body>
 </html>
