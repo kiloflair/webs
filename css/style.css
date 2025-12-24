@@ -2645,3 +2645,25 @@ select.form-input:invalid {
         transform: translateY(-9px) rotate(-45deg);
     }
 }
+/* =========================================
+   ИСПРАВЛЕНИЕ ФОНА (КАРТИНОК) НА АЙФОНЕ
+   Вставь это в самый конец файла
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+    
+    /* Исправляем главную картинку (hero) */
+    .hero-section {
+        /* 1. Отключаем "залипание" фона (это убирает гигантский зум) */
+        background-attachment: scroll !important;
+        
+        /* 2. Центрируем картинку */
+        background-position: center center !important;
+        
+        /* 3. Убеждаемся, что она покрывает весь блок */
+        background-size: cover !important;
+        
+        /* 4. Фиксируем высоту блока на весь экран телефона */
+        min-height: 100vh;
+    }
+}
