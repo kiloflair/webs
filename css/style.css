@@ -2584,17 +2584,33 @@ select.form-input:invalid {
 
 /* 3. СПЕЦИАЛЬНО ДЛЯ МОБИЛОК И УЗКИХ ОКОН */
 @media screen and (max-width: 1023px) {
-    /* Добавляем все классы через запятую */
     .hero, .hero-section, .services-hero-bg, .about-hero-section {
-        background-attachment: scroll !important; /* Убирает баг iPhone */
-        height: auto !important;                 /* Разрешает скролл текста */
-        min-height: 100vh !important;
-        background-position: center center !important;
-        padding-top: 100px !important;
+        /* УБИРАЕМ: height: 100vh !important; */
+        
+        /* ДОБАВЛЯЕМ: */
+        height: auto !important;          /* Разрешаем блоку растягиваться под текст */
+        min-height: 100vh !important;     /* Но не меньше высоты экрана */
+        padding-top: 120px !important;    /* Запас под шапку */
+        padding-bottom: 60px !important;  /* Запас снизу */
+        
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        
+        background-attachment: scroll !important; /* Исправление для iPhone */
     }
 
-    /* Уменьшаем шрифты для мобилок */
-    .hero-title, .hero-section h1 {
+    /* Исправляем заголовки, чтобы они не были гигантскими */
+    .hero h1, .hero-section h1, .services-hero-bg h1 {
         font-size: 2.5rem !important;
+        line-height: 1.1 !important;
+        margin: 20px 0 !important;
     }
+
+    /* Текст под заголовком */
+    .hero-subtitle, .section-kicker {
+        font-size: 1rem !important;
+        padding: 0 15px !important;
+    }
+
 }
