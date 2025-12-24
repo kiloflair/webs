@@ -9,28 +9,41 @@
     --header-height: 80px;
 }
 /* --- HERO SECTION (TEXT & FILTER) --- */
-.hero, .hero-section {
+/* 1. ОБЩИЕ НАСТРОЙКИ ДЛЯ ВСЕХ ФОНОВЫХ СЕКЦИЙ */
+.hero, .hero-section, .services-hero-bg, .about-hero-section {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-    padding-top: var(--header-height);
-    
-    /* ФОНОВАЯ КАРТИНКА */
-    /* Добавляем легкое бежевое наложение, чтобы текст (заголовки и кнопки) читался четко */
+    padding: 120px 20px 80px;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed; /* Эффект на ПК */
+}
+
+/* 2. КАРТИНКА ДЛЯ HOME (ГЛАВНАЯ) */
+.hero {
     background-image: 
-        linear-gradient(
-            to bottom, 
-            rgba(246, 245, 231, 0.8), 
-            rgba(246, 245, 231, 0.4)
-        ), 
-        url('../img/hero-bg.jpg'); /* Путь к картинке. Если картинка в корне, удали ../ */
-    
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Эффект параллакса */
+        linear-gradient(to bottom, rgba(246, 245, 231, 0.8), rgba(246, 245, 231, 0.4)), 
+        url('../img/martini.png'); 
+}
+
+/* 3. КАРТИНКА ДЛЯ COCKTAILS (ВОТ ОНА ТВОЯ ПРОПАЖА) */
+.hero-section {
+    background-image: 
+        linear-gradient(to bottom, rgba(246, 245, 231, 0.8), rgba(246, 245, 231, 0.4)), 
+        url('../img/hero-bg.jpg'); 
+}
+
+/* 4. КАРТИНКА ДЛЯ SERVICES */
+.services-hero-bg {
+    background-image: 
+        linear-gradient(to bottom, rgba(246, 245, 231, 0.8), rgba(246, 245, 231, 0.4)), 
+        url('../img/services-bg.jpg');
 }
 
 .hero-inner {
@@ -1463,6 +1476,98 @@ section {
     flex-direction: row-reverse;
 }
 
+/* --- АДАПТАЦИЯ КАРТОЧЕК КОКТЕЙЛЕЙ --- */
+
+@media screen and (max-width: 1023px) {
+    /* Контейнер коктейля - делаем вертикальным */
+    .cocktail-row {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0 !important; /* Убираем разрыв, будем регулировать отступами */
+        margin-bottom: 120px !important;
+    }
+
+    /* Арка со стаканом */
+/* 1. Делаем арку ЕЩЕ ВЫШЕ (удлиняем ножки максимально) */
+    .glass-wrapper {
+        width: 100% !important;
+        max-width: 320px !important;
+        
+        /* Увеличиваем высоту до 500px или даже 550px, 
+           чтобы ножки дошли до карты */
+        height: 520px !important; 
+        
+        margin: 0 auto !important;
+        border: 2px solid var(--accent-olive);
+        border-radius: 160px 160px 0 0;
+        
+        display: flex !important;
+        flex-direction: column !important; /* Контент строится сверху вниз */
+        align-items: center !important;
+        justify-content: flex-start !important; /* Коктейль прижат к ВЕРХУ арки */
+        
+        overflow: hidden !important;
+        background: transparent;
+        z-index: 5 !important;
+        position: relative !important;
+    }
+
+    .glass-img {
+        /* Картинка 1:1 (320x320) теперь всегда будет в верхней части арки */
+        width: 320px !important;
+        height: 320px !important;
+        object-fit: cover !important;
+        flex-shrink: 0 !important; /* Запрещаем картинке сжиматься */
+    }
+
+/* 2. Подгоняем карточку */
+    .h-card-container {
+        width: 92% !important;
+        max-width: 400px !important;
+        /* margin-top: -20px позволит длинным ножкам арки 
+           визуально "коснуться" или чуть зайти за карту */
+        margin: -20px auto 0 !important; 
+        z-index: 1 !important;
+        position: relative;
+    }
+
+/* Название коктейля */
+    .h-card-container h2 {
+        font-size: 1.6rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 20px !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+    }
+
+/* Внутренний вращающийся элемент */
+.h-card-flipper {
+        height: auto !important;
+        min-height: 400px;
+    }
+
+/* Сама лицевая сторона */
+    .h-card-front {
+        position: relative !important; /* Меняем с absolute, чтобы высота влияла на родителя */
+        height: auto !important;
+        min-height: 400px !important;
+        padding: 30px 20px 30px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+    }
+
+/* Описание снизу */
+    .mood-text {
+        position: relative !important;
+        bottom: auto !important; /* Убираем фиксацию к низу, если она была */
+        margin-top: 20px !important;
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        width: 100% !important;
+    }
+}
+
 /* --- СТАКАН (ФОРМАТ АРКИ / НИШИ) --- */
 .glass-wrapper {
     /* Фиксируем пропорцию 9:16 (как сторис) */
@@ -2479,20 +2584,17 @@ select.form-input:invalid {
 
 /* 3. СПЕЦИАЛЬНО ДЛЯ МОБИЛОК И УЗКИХ ОКОН */
 @media screen and (max-width: 1023px) {
-    .hero, .hero-section, .services-hero-bg{
-        /* Отключаем fixed, чтобы не было черных пятен и зума на iPhone */
-        background-attachment: scroll !important;
-        
-        /* Гарантируем высоту на весь экран Safari */
-        height: 100vh !important;
-        min-height: -webkit-fill-available !important;
-    }
-    
-    /* Если на странице Cocktails кнопок слишком много и они не лезут в экран */
-    .hero-section {
-        height: auto !important; /* Позволяем растягиваться, если контент длиннее экрана */
+    /* Добавляем все классы через запятую */
+    .hero, .hero-section, .services-hero-bg, .about-hero-section {
+        background-attachment: scroll !important; /* Убирает баг iPhone */
+        height: auto !important;                 /* Разрешает скролл текста */
         min-height: 100vh !important;
-        padding-top: 120px !important;
-        padding-bottom: 60px !important;
+        background-position: center center !important;
+        padding-top: 100px !important;
+    }
+
+    /* Уменьшаем шрифты для мобилок */
+    .hero-title, .hero-section h1 {
+        font-size: 2.5rem !important;
     }
 }

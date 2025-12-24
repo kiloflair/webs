@@ -32,115 +32,107 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
 
-    /* -------------------------------------------
+/* -------------------------------------------
        2. ИНИЦИАЛИЗАЦИЯ GSAP (СКРОЛЛ-АНИМАЦИЯ)
     ------------------------------------------- */
-    // Регистрируем плагин один раз
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
-    }
 
-    const cocktails = document.querySelectorAll('.cocktail-row');
-
-    // Функция для настройки начальной анимации (при загрузке страницы)
-    function initScrollAnimations() {
-        if (typeof gsap === 'undefined') return;
-
-        cocktails.forEach((row) => {
-            const flipper = row.querySelector('.h-card-flipper');
+        gsap.utils.toArray('.cocktail-row').forEach((row, i) => {
             const glass = row.querySelector('.glass-wrapper');
+            const flipper = row.querySelector('.h-card-flipper');
+            
+            // Проверка: мобильный ли это экран (меньше 1024px)
+            const isMobile = window.innerWidth < 1024;
 
-            if (flipper && glass) {
-                // Исходное состояние: спрятано
-                gsap.set(flipper, { rotationY: 180 }); 
-                gsap.set(glass, { y: 60, opacity: 0 });
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: row,
+                    start: isMobile ? "top 85%" : "top 75%", 
+                    toggleActions: "play none none reverse"
+                }
+            });
 
-                // Анимация при скролле
-                // Мы сохраняем ссылку на анимацию в объект row, чтобы потом её убить при фильтре
-                row.animationTl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: row,
-                        start: "top 85%", 
-                        toggleActions: "play none none reverse"
-                    }
-                });
-
-                row.animationTl
-                    .to(glass, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" })
-                    .to(flipper, { rotationY: 0, duration: 1.2, ease: "power2.inOut" }, "-=0.6");
+            if (isMobile) {
+                // --- АНИМАЦИЯ ДЛЯ ТЕЛЕФОНА (Вертикальная) ---
+                // Стакан в рамке просто плавно проявляется и чуть приподнимается
+                tl.fromTo(glass, 
+                    { opacity: 0, y: 30 }, 
+                    { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+                )
+                // Карточка под ним выплывает следом
+                .fromTo(flipper, 
+                    { opacity: 0, y: 20 }, 
+                    { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+                    "-=0.4"
+                );
+            } else {
+                // --- АНИМАЦИЯ ДЛЯ НОУТБУКА (Горизонтальная) ---
+                const isEven = i % 2 === 0;
+                
+                tl.fromTo(glass, 
+                    { opacity: 0, x: isEven ? -100 : 100 }, 
+                    { opacity: 1, x: 0, duration: 1, ease: "power2.out" }
+                )
+                .fromTo(flipper, 
+                    { 
+                        opacity: 0, 
+                        rotationY: isEven ? 30 : -30, 
+                        x: isEven ? 100 : -100 
+                    }, 
+                    { opacity: 1, rotationY: 0, x: 0, duration: 1.2, ease: "power2.out" }, 
+                    "-=0.7"
+                );
             }
         });
     }
 
-    // Запускаем анимацию при загрузке
-    initScrollAnimations();
 
-
-    /* -------------------------------------------
-       3. ЛОГИКА ФИЛЬТРА (ПРИНУДИТЕЛЬНЫЙ ПОКАЗ)
+/* -------------------------------------------
+       3. ФИЛЬТРАЦИЯ КОКТЕЙЛЕЙ
     ------------------------------------------- */
     const filterButtons = document.querySelectorAll('.pill-btn');
+    const cocktailRows = document.querySelectorAll('.cocktail-row');
 
     if (filterButtons.length > 0) {
         filterButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                
-                // Переключаем активную кнопку
+                // 1. Меняем активную кнопку
                 filterButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
-                const filterValue = btn.getAttribute('data-filter');
+                const filter = btn.getAttribute('data-filter');
 
-                cocktails.forEach(row => {
-                    const flipper = row.querySelector('.h-card-flipper');
+                // 2. Анимируем фильтрацию
+                cocktailRows.forEach(row => {
+                    const category = row.getAttribute('data-category');
                     const glass = row.querySelector('.glass-wrapper');
-                    const shouldShow = (filterValue === 'all' || row.getAttribute('data-category') === filterValue);
+                    const flipper = row.querySelector('.h-card-flipper');
 
-                    if (shouldShow) {
-                        // 1. Показываем блок в верстке
+                    if (filter === 'all' || category === filter) {
+                        // ПОКАЗЫВАЕМ
                         row.style.display = 'flex';
-
-                        // 2. ВАЖНО: Если есть GSAP, мы ПРИНУДИТЕЛЬНО анимируем в видимое состояние
-                        if (typeof gsap !== 'undefined') {
-                            // Если была старая скролл-анимация, убиваем её, чтобы не мешала
-                            if (row.animationTl) {
-                                row.animationTl.kill(); // Убиваем таймлайн
-                                if (row.animationTl.scrollTrigger) row.animationTl.scrollTrigger.kill(); // Убиваем триггер
-                                row.animationTl = null;
-                            }
-
-                            // Мгновенная (но плавная) анимация появления "ЗДЕСЬ И СЕЙЧАС"
-                            // overwrite: true отменяет любые другие конфликтующие анимации
-                            gsap.to(glass, { 
-                                y: 0, 
-                                opacity: 1, 
-                                duration: 0.5, 
-                                overwrite: true 
-                            });
-                            
-                            gsap.to(flipper, { 
-                                rotationY: 0, 
-                                duration: 0.8, 
-                                overwrite: true 
-                            });
-                        }
-
+                        
+                        // Сбрасываем старую анимацию и запускаем новую
+                        gsap.fromTo(row, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+                        
+                        // Перезапускаем анимацию стакана и карты, чтобы они выехали снова
+                        gsap.fromTo(glass, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7 });
+                        gsap.fromTo(flipper, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.8, delay: 0.2 });
                     } else {
-                        // Скрываем
-                        if (typeof gsap !== 'undefined') {
-                             // Быстро прячем перед display: none
-                            gsap.to(row, { opacity: 0, duration: 0.3, onComplete: () => {
-                                row.style.display = 'none';
-                                row.style.opacity = '1'; // Возвращаем для будущего появления
-                            }});
-                        } else {
-                            row.style.display = 'none';
-                        }
+                        // СКРЫВАЕМ
+                        gsap.to(row, { 
+                            opacity: 0, 
+                            duration: 0.3, 
+                            onComplete: () => { row.style.display = 'none'; } 
+                        });
                     }
                 });
 
-                // Обновляем глобальные триггеры (на всякий случай)
-                if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+                // 3. САМОЕ ВАЖНОЕ: Говорим GSAP пересчитать позиции скролла
+                setTimeout(() => {
+                    ScrollTrigger.refresh();
+                }, 400);
             });
         });
     }
