@@ -300,42 +300,6 @@ overflow-x: hidden;
     color: var(--accent-olive);
 }
 
-/* burger */
-
-.burger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 36px;
-    height: 36px;
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-}
-
-.burger span {
-    display: block;
-    height: 2px;
-    border-radius: 999px;
-    background-color: var(--text-main);
-    transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-/* состояние крестика */
-
-.burger.open span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
-
-.burger.open span:nth-child(2) {
-    opacity: 0;
-}
-
-.burger.open span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-}
 
 /* ---------- HERO ---------- */
 
@@ -654,10 +618,6 @@ section {
         transform: translateY(0);
         opacity: 1;
         pointer-events: auto;
-    }
-
-    .burger {
-        display: flex;
     }
 
     .hero {
@@ -2621,5 +2581,72 @@ select.form-input:invalid {
 @media (max-width: 900px) {
     .press-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================
+   ИСПРАВЛЕННЫЙ БУРГЕР МЕНЮ
+   Вставь это в самый конец style.css
+   ========================================= */
+
+/* 1. На компьютерах бургер скрыт */
+.burger {
+    display: none;
+}
+
+/* 2. На мобильных устройствах (меньше 768px) */
+@media screen and (max-width: 768px) {
+    
+    .burger {
+        /* Включаем отображение */
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px; /* Расстояние между полосками */
+        
+        /* Размеры самой кнопки */
+        width: 40px; 
+        height: 40px;
+        
+        /* Сбрасываем стили кнопки */
+        background: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        
+        /* Чтобы было поверх всего */
+        z-index: 2000; 
+        
+        /* Убираем серый квадрат при клике на Айфоне */
+        -webkit-tap-highlight-color: transparent; 
+    }
+
+    /* Рисуем сами полоски */
+    .burger span {
+        display: block;
+        width: 100%; /* ВАЖНО: растягиваем полоску на всю ширину кнопки */
+        height: 3px; /* Чуть толще, чтобы лучше видно было */
+        background-color: var(--text-main); /* Твой коричневый цвет */
+        border-radius: 4px;
+        transition: all 0.3s ease; /* Плавная анимация */
+    }
+
+    /* --- АНИМАЦИЯ КРЕСТИКА --- */
+    
+    /* Первая палочка поворачивается */
+    .burger.open span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    /* Вторая исчезает */
+    .burger.open span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-10px); /* Красивый эффект улетания */
+    }
+
+    /* Третья поворачивается */
+    .burger.open span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
     }
 }
