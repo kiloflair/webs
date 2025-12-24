@@ -2555,3 +2555,71 @@ select.form-input:invalid {
         gap: 0 !important;
     }
 }
+
+/* --- PRESS GRID (СЕТКА СТАТЕЙ) --- */
+.press-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.press-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(167, 154, 108, 0.3);
+    padding: 40px;
+    background: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    height: 100%; /* Одинаковая высота карточек */
+}
+
+.press-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(167, 154, 108, 0.15);
+    border-color: var(--accent-olive);
+}
+
+.press-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 15px;
+}
+
+.press-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.press-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.press-link-text {
+    font-weight: 600;
+    color: var(--accent-olive);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* Мобильная версия (одна колонка) */
+@media (max-width: 900px) {
+    .press-grid {
+        grid-template-columns: 1fr;
+    }
+}
