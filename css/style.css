@@ -9,7 +9,7 @@
     --header-height: 80px;
 }
 /* --- HERO SECTION (TEXT & FILTER) --- */
-.hero-section {
+.hero, .hero-section {
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -2649,30 +2649,19 @@ select.form-input:invalid {
    УНИВЕРСАЛЬНОЕ ИСПРАВЛЕНИЕ ДЛЯ IPHONE (HERO БЛОКИ)
    =================================================== */
 
+/* ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ ДЛЯ ВСЕХ СТРАНИЦ (HOME И COCKTAILS) */
 @media screen and (max-width: 768px) {
     
-    /* Применяем исправление сразу к .hero и к .hero-section */
     .hero, .hero-section {
-        /* 1. ГЛАВНОЕ: Отключаем эффект 'fixed', который растягивает фото */
+        /* Отключаем фиксацию фона - это убирает "черноту" и гигантский масштаб */
         background-attachment: scroll !important;
-
-        /* 2. Центрируем стакан/картинку */
+        
+        /* Центрируем и растягиваем правильно */
         background-position: center center !important;
-
-        /* 3. Масштабируем так, чтобы всё влезло в экран */
         background-size: cover !important;
-
-        /* 4. Исправляем высоту для Safari */
+        
+        /* Исправляем высоту для Safari на iPhone */
         height: 100vh !important;
         min-height: -webkit-fill-available;
-        
-        /* 5. Убираем лишние отступы, если они мешают */
-        padding-top: 60px !important;
-    }
-
-    /* Дополнительно: если на коктейлях текст улетает, 
-       можем немного уменьшить заголовок */
-    .hero-title {
-        font-size: 2.5rem !important;
     }
 }
