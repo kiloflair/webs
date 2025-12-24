@@ -2649,21 +2649,20 @@ select.form-input:invalid {
    ИСПРАВЛЕНИЕ ФОНА (КАРТИНОК) НА АЙФОНЕ
    Вставь это в самый конец файла
    ========================================= */
-
 @media screen and (max-width: 768px) {
-    
-    /* Исправляем главную картинку (hero) */
     .hero-section {
-        /* 1. Отключаем "залипание" фона (это убирает гигантский зум) */
+        /* 1. ГЛАВНОЕ: Отключаем фиксацию. 
+           На айфоне картинка станет обычной, но она ПОЯВИТСЯ */
         background-attachment: scroll !important;
-        
-        /* 2. Центрируем картинку */
-        background-position: center center !important;
-        
-        /* 3. Убеждаемся, что она покрывает весь блок */
+
+        /* 2. ПРИНУДИТЕЛЬНО возвращаем масштаб 100% */
         background-size: cover !important;
-        
-        /* 4. Фиксируем высоту блока на весь экран телефона */
-        min-height: 100vh;
+
+        /* 3. Центрируем именно по стакану */
+        background-position: center center !important;
+
+        /* 4. Ограничиваем высоту, чтобы картинка не улетала */
+        height: 100vh !important;
+        min-height: -webkit-fill-available; /* Специально для Safari */
     }
 }
