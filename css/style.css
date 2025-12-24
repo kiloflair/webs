@@ -2448,22 +2448,25 @@ select.form-input:invalid {
    ФИНАЛЬНОЕ РЕШЕНИЕ: ИДЕАЛЬНЫЙ ФОН ВЕЗДЕ
    =================================================== */
 
-/* 1. ПРАВИЛО ДЛЯ ВСЕХ ЭКРАНОВ (И комп, и мобилка) */
-.hero, .hero-section {
-    position: relative;
-    width: 100%;
-    /* Используем min-height, чтобы блок никогда не был меньше экрана */
-    min-height: 100vh !important; 
+/* Добавляем .services-hero-bg в общий список */
+.hero, .hero-section, .about-hero-section, .services-hero-bg {
+    min-height: 100vh;
     display: flex;
+    flex-direction: column; /* Чтобы заголовок и контент строились сверху вниз */
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    text-align: center;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
-    /* Настройки картинки */
-    background-size: cover !important;
-    /* Сдвигаем фокус чуть-чуть вправо (65%), чтобы стакан был виден даже на узком экране */
-    background-position: 65% center !important; 
-    background-repeat: no-repeat !important;
+/* Укажи картинку для страницы Services (если она отличается) */
+.services-hero-bg {
+    background-image: 
+        linear-gradient(to bottom, rgba(246, 245, 231, 0.8), rgba(246, 245, 231, 0.4)), 
+        url('../img/services-bg.jpg'); /* Проверь название файла! */
 }
 
 /* 2. СПЕЦИАЛЬНО ДЛЯ КОМПЬЮТЕРОВ (Широкое окно) */
@@ -2476,7 +2479,7 @@ select.form-input:invalid {
 
 /* 3. СПЕЦИАЛЬНО ДЛЯ МОБИЛОК И УЗКИХ ОКОН */
 @media screen and (max-width: 1023px) {
-    .hero, .hero-section {
+    .hero, .hero-section, .services-hero-bg{
         /* Отключаем fixed, чтобы не было черных пятен и зума на iPhone */
         background-attachment: scroll !important;
         
