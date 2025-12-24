@@ -2645,23 +2645,54 @@ select.form-input:invalid {
         transform: translateY(-9px) rotate(-45deg);
     }
 }
+
+
 /* ===================================================
-   УНИВЕРСАЛЬНОЕ ИСПРАВЛЕНИЕ ДЛЯ IPHONE (HERO БЛОКИ)
+   ФИНАЛЬНОЕ РЕШЕНИЕ: ИДЕАЛЬНЫЙ ФОН ВЕЗДЕ
    =================================================== */
 
-/* ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ ДЛЯ ВСЕХ СТРАНИЦ (HOME И COCKTAILS) */
-@media screen and (max-width: 768px) {
-    
+/* 1. ПРАВИЛО ДЛЯ ВСЕХ ЭКРАНОВ (И комп, и мобилка) */
+.hero, .hero-section {
+    position: relative;
+    width: 100%;
+    /* Используем min-height, чтобы блок никогда не был меньше экрана */
+    min-height: 100vh !important; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    /* Настройки картинки */
+    background-size: cover !important;
+    /* Сдвигаем фокус чуть-чуть вправо (65%), чтобы стакан был виден даже на узком экране */
+    background-position: 65% center !important; 
+    background-repeat: no-repeat !important;
+}
+
+/* 2. СПЕЦИАЛЬНО ДЛЯ КОМПЬЮТЕРОВ (Широкое окно) */
+@media screen and (min-width: 1024px) {
     .hero, .hero-section {
-        /* Отключаем фиксацию фона - это убирает "черноту" и гигантский масштаб */
+        background-attachment: fixed !important; /* Красивый параллакс на ноуте */
+        background-position: center center !important; /* На широком экране лучше центр */
+    }
+}
+
+/* 3. СПЕЦИАЛЬНО ДЛЯ МОБИЛОК И УЗКИХ ОКОН */
+@media screen and (max-width: 1023px) {
+    .hero, .hero-section {
+        /* Отключаем fixed, чтобы не было черных пятен и зума на iPhone */
         background-attachment: scroll !important;
         
-        /* Центрируем и растягиваем правильно */
-        background-position: center center !important;
-        background-size: cover !important;
-        
-        /* Исправляем высоту для Safari на iPhone */
+        /* Гарантируем высоту на весь экран Safari */
         height: 100vh !important;
-        min-height: -webkit-fill-available;
+        min-height: -webkit-fill-available !important;
+    }
+    
+    /* Если на странице Cocktails кнопок слишком много и они не лезут в экран */
+    .hero-section {
+        height: auto !important; /* Позволяем растягиваться, если контент длиннее экрана */
+        min-height: 100vh !important;
+        padding-top: 120px !important;
+        padding-bottom: 60px !important;
     }
 }
